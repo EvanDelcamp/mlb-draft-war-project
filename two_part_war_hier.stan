@@ -4,10 +4,10 @@ data {
   int<lower=1> T;                     // number of draft years (2017,2018 => T=2)
 
   matrix[N, K] X;                     // predictors (shared by both parts)
-  int<lower=0, upper=1> z[N];         // reached MLB within 7 years (0/1)
+  array[N] int<lower=0, upper=1> z;        // reached MLB within 7 years (0/1)
   vector[N] y;                        // WAR_7yr (0 for non-MLB, real for MLB)
 
-  int<lower=1, upper=T> year_id[N];   // year index for each player
+  array[N] int<lower=1, upper=T> year_id;   // year index for each player
 }
 
 parameters {
